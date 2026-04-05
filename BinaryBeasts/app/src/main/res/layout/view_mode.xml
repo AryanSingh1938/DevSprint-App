@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!---->
+<!--    Joke → https://geek-jokes.sameerkumar.website/api?format=json-->
+<!--    Dog Image → https://api.thedogapi.com/v1/images/search-->
+<!--    Advice → https://api.adviceslip.com/advice-->
+
+
+<!--    data class JokeResponse(-->
+<!--    val joke: String-->
+<!--    )-->
+
+<!--    data class DogResponse(-->
+<!--    val url: String-->
+<!--    )-->
+
+<!--    data class AdviceResponse(-->
+<!--    val slip: Slip-->
+<!--    )-->
+
+<!--    data class Slip(-->
+<!--    val advice: String-->
+<!--    )-->
+
+
+<!--    interface JokeApi {-->
+<!--    @GET("api")-->
+<!--    suspend fun getJoke(-->
+<!--    @Query("format") format: String = "json"-->
+<!--    ): JokeResponse-->
+<!--    }-->
+
+<!--    interface DogApi {-->
+<!--    @GET("v1/images/search")-->
+<!--    suspend fun getDog(): List<DogResponse>-->
+<!--    }-->
+
+<!--    interface AdviceApi {-->
+<!--    @GET("advice")-->
+<!--    suspend fun getAdvice(): AdviceResponse-->
+<!--    }-->
+
+<!--    val retrofit = Retrofit.Builder()-->
+<!--    .baseUrl("https://api.adviceslip.com/")-->
+<!--    .addConverterFactory(GsonConverterFactory.create())-->
+<!--    .build()-->
+
+<!--    val adviceApi = retrofit.create(AdviceApi::class.java)-->
+
+<!--    // Separate Retrofit for other APIs-->
+<!--    val jokeRetrofit = Retrofit.Builder()-->
+<!--    .baseUrl("https://geek-jokes.sameerkumar.website/")-->
+<!--    .addConverterFactory(GsonConverterFactory.create())-->
+<!--    .build()-->
+
+<!--    val dogRetrofit = Retrofit.Builder()-->
+<!--    .baseUrl("https://api.thedogapi.com/")-->
+<!--    .addConverterFactory(GsonConverterFactory.create())-->
+<!--    .build()-->
+
+<!--    val jokeApi = jokeRetrofit.create(JokeApi::class.java)-->
+<!--    val dogApi = dogRetrofit.create(DogApi::class.java)-->
+
+
+
+<!--    <LinearLayout-->
+<!--        android:orientation="vertical"-->
+<!--        android:padding="16dp"-->
+<!--        android:gravity="center"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/dogImage"-->
+<!--            android:layout_width="200dp"-->
+<!--            android:layout_height="200dp"/>-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/jokeText"-->
+<!--            android:text="Joke here"-->
+<!--            android:textSize="16sp"-->
+<!--            android:padding="8dp"/>-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/adviceText"-->
+<!--            android:text="Advice here"-->
+<!--            android:textSize="16sp"-->
+<!--            android:padding="8dp"/>-->
+
+<!--        <Button-->
+<!--            android:id="@+id/btn"-->
+<!--            android:text="Generate Chaos"/>-->
+<!--    </LinearLayout>-->
+
+
+
+
+<!--    class MainActivity : AppCompatActivity() {-->
+
+<!--    private lateinit var dogImage: ImageView-->
+<!--    private lateinit var jokeText: TextView-->
+<!--    private lateinit var adviceText: TextView-->
+<!--    private lateinit var btn: Button-->
+
+<!--    override fun onCreate(savedInstanceState: Bundle?) {-->
+<!--    super.onCreate(savedInstanceState)-->
+<!--    setContentView(R.layout.activity_main)-->
+
+<!--    dogImage = findViewById(R.id.dogImage)-->
+<!--    jokeText = findViewById(R.id.jokeText)-->
+<!--    adviceText = findViewById(R.id.adviceText)-->
+<!--    btn = findViewById(R.id.btn)-->
+
+<!--    btn.setOnClickListener {-->
+<!--    loadData()-->
+<!--    }-->
+<!--    }-->
+
+<!--    private fun loadData() {-->
+<!--    lifecycleScope.launch {-->
+<!--    try {-->
+<!--    val joke = jokeApi.getJoke()-->
+<!--    val dog = dogApi.getDog()-->
+<!--    val advice = adviceApi.getAdvice()-->
+
+<!--    jokeText.text = joke.joke-->
+<!--    adviceText.text = advice.slip.advice-->
+
+<!--    Glide.with(this@MainActivity)-->
+<!--    .load(dog[0].url)-->
+<!--    .into(dogImage)-->
+
+<!--    } catch (e: Exception) {-->
+<!--    Toast.makeText(this@MainActivity, "Error: ${e.message}", Toast.LENGTH_SHORT).show()-->
+<!--    }-->
+<!--    }-->
+<!--    }-->
+<!--    }-->
+<!--    -->
+<!--    -->
+<!-- -->
